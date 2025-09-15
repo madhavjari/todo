@@ -1,10 +1,13 @@
+import { myTask } from "./add-task";
+
 export let myProjects = [];
 
 export function saveForm(){
     const id = crypto.randomUUID();
     let projectName = document.getElementById('project-title').value;
-    myProjects.push(projectDetails(id,projectName));
-    createProjectElements(id,projectName);
+    let project = projectDetails(id,projectName);
+    myProjects.push(project);
+    return project;
 }
 
 export function projectDetails(id,projectName){
@@ -13,9 +16,12 @@ export function projectDetails(id,projectName){
 
 export function createProjectElements(id,projectName){
     const body = document.querySelector('body');
-    const projectCard = document.createElement('button');
-    projectCard.className = 'project-btn';
-    projectCard.id = id;
-    projectCard.textContent = projectName;
+    const projectCard = document.createElement('div');
+    projectCard.classList.add('project-card');
     body.appendChild(projectCard);
+    const projectBtn = document.createElement('button');
+    projectBtn.classList.add('project-btn');
+    projectBtn.id = id;
+    projectBtn.textContent = projectName;
+    projectCard.appendChild(projectBtn);
 }

@@ -1,21 +1,36 @@
 export let myTask = [];
 
+export function addTaskButton(){
+    
+}
+
 export function saveTaskForm(){
     const id = crypto.randomUUID();
     let taskName = document.getElementById('task-title').value;
-    myTask.push(saveTask(id,taskName));
-    createTaskElements(id,taskName);
+    let taskDesc = document.getElementById('task-desc').value;
+    let taskDue = document.getElementById('due-date').value;
+    let taskPriority = document.getElementById('priority').value;
+    let task = saveTask(id,taskName,taskDesc,taskDue,taskPriority);
+    myTask.push(task);
+    return task;
 }
 
-export function saveTask(id,taskName){
-    return {id,taskName};
+export function saveTask(id,taskName,taskDesc,taskDue,taskPriority){
+    return {id,taskName,taskDesc,taskDue,taskPriority};
 }
 
-export function createTaskElements(id,taskName){
-    const body = document.querySelector('body');
+export function createTaskElements(id,taskName,taskDesc,taskDue,taskPriority){
     const taskCard = document.createElement('div');
-    taskCard.textContent = taskName; 
+    taskCard.classList.add('task-card');
     taskCard.id = id;
-    taskCard.className = 'tasks';
-    body.appendChild(taskCard);
+    projectCard.appendChild(taskCard);
+    const taskNameElement = document.createElement('div');
+    taskNameElement.textContent = taskName;
+    const taskDescElement = document.createElement('div');
+    taskDescElement.textContent = taskDesc;
+    const taskDueElement = document.createElement('div');
+    taskDueElement.textContent = taskDue;
+    const taskPriorityElement = document.createElement('div');
+    taskPriorityElement.textContent = taskPriority;
+    taskCard.append(taskNameElement,taskDescElement,taskDueElement,taskPriorityElement);
 }
