@@ -20,12 +20,8 @@ document.querySelector('.project-form').addEventListener('submit',(event)=>{
         const card = document.querySelector('.card');
         if (card) {
             card.innerHTML = '';
-            const addTaskBtn = document.createElement('button');
-            addTaskBtn.id = 'new-task';
-            addTaskBtn.textContent = '+';
-            card.appendChild(addTaskBtn);
             const projectId = e.target.id;
-            taskBtnDom(addTaskBtn, projectId);
+            taskBtnDom(projectId);
         }
     });
 })

@@ -8,19 +8,16 @@ export function projectBtnDom(){
             const card = document.querySelector('.card');
             if (card) {
                 card.innerHTML = '';
-                const addTaskBtn = document.createElement('button');
-                addTaskBtn.id = 'new-task';
-                addTaskBtn.textContent = '+';
-                card.appendChild(addTaskBtn);
                 const projectId = e.target.id;
-                taskBtnDom(addTaskBtn, projectId);
+                taskBtnDom(projectId);
             }
         })
     })
 }
 
-export function taskBtnDom(addTaskBtn,projectId){
+export function taskBtnDom(projectId){
     const projectName = document.getElementById(projectId);
+    const addTaskBtn = document.getElementById('new-task');
     console.log(projectName.textContent);
     addTaskBtn.addEventListener('click',()=>{
         document.getElementById('new-todo').showModal();
@@ -30,8 +27,8 @@ export function taskBtnDom(addTaskBtn,projectId){
     })
     document.querySelector('.todo-form').addEventListener('submit',(event)=>{
         event.preventDefault();
-        const task = saveTaskForm(projectName.textContent);
-        createTaskElements(projectName,task.id,task.taskName,task.taskDesc,task.taskDue,task.taskPriority);
+        const task = saveTaskForm(projectId);
+        createTaskElements(task.id,task.taskName,task.taskDesc,task.taskDue,task.taskPriority);
         event.target.reset();
     })
 }

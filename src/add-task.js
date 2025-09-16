@@ -1,33 +1,40 @@
-export let myTask = [];
+import { myProjects,updateProjects } from "./add-project";
 
-export function addTaskButton(){
-    
-}
-
-export function saveTaskForm(projectName){
+export function saveTaskForm(projectId){
     const id = crypto.randomUUID();
     let taskName = document.getElementById('task-title').value;
     let taskDesc = document.getElementById('task-desc').value;
     let taskDue = document.getElementById('due-date').value;
     let taskPriority = document.getElementById('priority').value;
-    let task = saveTask(projectName,id,taskName,taskDesc,taskDue,taskPriority);
-    myTask.push(task);
+    const task = saveTask(id,taskName,taskDesc,taskDue,taskPriority);
+    const updatedProjects = appendTask(myProjects,projectId,task);
+    updateProjects(updatedProjects);
+    console.log("my",myProjects);
     return task;
 }
 
-export function saveTask(projectName,id,taskName,taskDesc,taskDue,taskPriority){
-    return {projectName,id,taskName,taskDesc,taskDue,taskPriority};
+export function appendTask(myProjects,projectId,task){
+    return myProjects.map(project =>{
+        if (project.id === projectId){
+            return {
+                ...project,
+                myTask:[...project.myTask,task]
+            };
+        }
+        return project;
+    })
 }
 
-export function createTaskElements(projectName,id,taskName,taskDesc,taskDue,taskPriority){
+export function saveTask(id,taskName,taskDesc,taskDue,taskPriority){
+    return {id,taskName,taskDesc,taskDue,taskPriority};
+}
+
+export function createTaskElements(id,taskName,taskDesc,taskDue,taskPriority){
     const card = document.querySelector('.card');
-    card.id = projectName.id;
     const taskCard = document.createElement('div');
     taskCard.classList.add('task-card');
     taskCard.id = id;
     card.appendChild(taskCard);
-    const projectNameElement = document.createElement('div');
-    projectNameElement.textContent = projectName.textContent;
     const taskNameElement = document.createElement('div');
     taskNameElement.textContent = taskName;
     const taskDescElement = document.createElement('div');
@@ -36,5 +43,5 @@ export function createTaskElements(projectName,id,taskName,taskDesc,taskDue,task
     taskDueElement.textContent = taskDue;
     const taskPriorityElement = document.createElement('div');
     taskPriorityElement.textContent = taskPriority;
-    taskCard.append(projectNameElement,taskNameElement,taskDescElement,taskDueElement,taskPriorityElement);
+    taskCard.append(taskNameElement,taskDescElement,taskDueElement,taskPriorityElement);
 }
