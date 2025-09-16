@@ -15,13 +15,11 @@ export function projectDetails(id,projectName){
 }
 
 export function createProjectElements(id,projectName){
-    const body = document.querySelector('body');
-    const projectCard = document.createElement('div');
-    projectCard.classList.add('project-card');
-    body.appendChild(projectCard);
+    const nav = document.querySelector('nav');
     const projectBtn = document.createElement('button');
     projectBtn.classList.add('project-btn');
     projectBtn.id = id;
     projectBtn.textContent = projectName;
-    projectCard.appendChild(projectBtn);
+    nav.appendChild(projectBtn);
+    return projectBtn;
 }
