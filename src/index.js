@@ -25,7 +25,6 @@ nav.addEventListener('click',(e) =>{
     if(projectBtn){
         const projectId = e.target.id;
         const card = document.querySelector('.card');
-        card.innerHTML = '';
         card.id = projectId+'.';
         viewTask(projectId,card);
         taskBtnDom(projectId,card);

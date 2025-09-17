@@ -1,30 +1,29 @@
 import { myProjects } from "./add-project";
 
 export function viewTask(projectId,card){
+    card.innerHTML = '';
     const currProject = myProjects.find(project => project.id === projectId);
     console.log('hello',currProject);
-    const projectName = document.createElement('div');
+    const projectName = document.createElement('h2');
     projectName.textContent = currProject.projectName;
-    const allTaskId = currProject.myTask.map(task => task.id);
-    const allTaskName = currProject.myTask.map(task => task.taskName);
-    const allTaskDesc = currProject.myTask.map(task => task.taskDesc);
-    const allTaskDue = currProject.myTask.map(task => task.taskDue);
-    const allTaskPriority = currProject.myTask.map(task => task.taskPriority);
-    console.log(currProject.myTask.length)
-    for(let i = 0; i < currProject.myTask.length; i++){
+    const taskContainer = document.createElement('div');
+    taskContainer.classList.add('task-container');
+    console.log(currProject.myTask.length);
+    currProject.myTask.forEach(task => {
         const taskCard = document.createElement('div');
         taskCard.classList.add('task-card');
-        taskCard.id = allTaskId[i];
-        card.appendChild(taskCard);
+        taskCard.id = task.id;
+        console.log("taskcard",taskCard);
         const taskNameElement = document.createElement('div');
-        taskNameElement.textContent = allTaskName[i];
+        taskNameElement.textContent = task.taskName;
         const taskDescElement = document.createElement('div');
-        taskDescElement.textContent = allTaskDesc[i];
+        taskDescElement.textContent = task.taskDesc;
         const taskDueElement = document.createElement('div');
-        taskDueElement.textContent = allTaskDue[i];
+        taskDueElement.textContent = task.taskDue;
         const taskPriorityElement = document.createElement('div');
-        taskPriorityElement.textContent = allTaskPriority[i];
-        taskCard.append(projectName,taskNameElement,taskDescElement,taskDueElement,taskPriorityElement)
-        console.log(taskCard);
-    }
+        taskPriorityElement.textContent = task.taskPriority;
+        taskCard.append(taskNameElement,taskDescElement,taskDueElement,taskPriorityElement);
+        taskContainer.appendChild(taskCard);
+    });
+    card.append(projectName,taskContainer);
 }
