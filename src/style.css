@@ -41,6 +41,10 @@ nav>div:first-child{
     color: brown;
 }
 
+.article > div:first-child{
+    height: 3rem;
+}
+
 #new-task{
     width: 3rem;
     height: 3rem;
@@ -48,7 +52,7 @@ nav>div:first-child{
     border-radius: 50%;
 }
 
-.article{
+.card{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
 }
