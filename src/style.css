@@ -26,6 +26,13 @@ nav>div:first-child{
     height: 3rem;
 }
 
+.project-container{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
 #new-project-btn,.project-btn,#new-task{
     width: 10rem;
     font-size: 1.5rem;
@@ -45,6 +52,10 @@ nav>div:first-child{
     height: 3rem;
 }
 
+.card > h2{
+    text-align: center;
+}
+
 #new-task{
     width: 3rem;
     height: 3rem;
@@ -52,7 +63,23 @@ nav>div:first-child{
     border-radius: 50%;
 }
 
-.card{
+.task-container{
+    font-size: 1.2rem;
+    padding-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
+    grid-template-columns: repeat(auto-fit,10rem);
+    gap: 2rem;
+}
+
+.task-card{
+    min-height: 10rem;
+    box-shadow: 0 0.2rem 0.6rem 0;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+img{
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
 }

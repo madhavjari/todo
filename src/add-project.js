@@ -1,3 +1,5 @@
+import deleteImg from './img/delete.png';
+
 export let myProjects = [];
 
 //saves the new project form
@@ -11,7 +13,8 @@ export function saveForm(){
 
 //updates the form if new task is added
 export function updateProjects(updatedProjects){
-    myProjects = updatedProjects;
+    myProjects.length = 0;
+    myProjects.push(...updatedProjects);
 }
 
 //creates the object of new project created
@@ -22,9 +25,17 @@ export function projectDetails(id,projectName){
 //loads the new project in the webpage
 export function createProjectElements(id,projectName){
     const nav = document.querySelector('nav');
+    const projectCont = document.createElement('div');
+    projectCont.classList.add('project-container');
+    nav.appendChild(projectCont);
+    projectCont.id = id;
     const projectBtn = document.createElement('button');
+    const deleteBtn = document.createElement('img');
+    deleteBtn.src = deleteImg;
+    deleteBtn.setAttribute('data-id',id);
+    deleteBtn.classList.add('delete-btn');
     projectBtn.classList.add('project-btn');
-    projectBtn.id = id;
+    projectBtn.setAttribute('data-id',id);
     projectBtn.textContent = projectName;
-    nav.appendChild(projectBtn);
+    projectCont.append(projectBtn,deleteBtn);
 }
