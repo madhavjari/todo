@@ -28,6 +28,15 @@
             <button type="submit">Save</button>
         </form>
     </dialog>
+    <dialog id="edit-project">
+        <form action="./submit" method="get" class="edit-project-form">
+            <button id="edit-project-close-button" type="button">&times;</button>
+            <h2>Edit Project</h2>
+            <label for="project-title-edit">Project Name*</label>
+            <input type="text" name="project_title" id="project-title-edit" required autofocus>
+            <button type="submit">Save</button>
+        </form>
+    </dialog>
     <dialog id="new-todo">
         <form action="./submit" method="get" class="todo-form">
             <button id="todo-close-button" type="button">&times;</button>

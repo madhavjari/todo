@@ -1,4 +1,5 @@
 import deleteImg from './img/delete.png';
+import editImg from './img/edit-button.png'
 
 export let myProjects = [];
 
@@ -31,11 +32,15 @@ export function createProjectElements(id,projectName){
     projectCont.id = id;
     const projectBtn = document.createElement('button');
     const deleteBtn = document.createElement('img');
+    const projectEditBtn = document.createElement('img');
     deleteBtn.src = deleteImg;
     deleteBtn.setAttribute('data-id',id);
     deleteBtn.classList.add('delete-btn');
     projectBtn.classList.add('project-btn');
     projectBtn.setAttribute('data-id',id);
     projectBtn.textContent = projectName;
-    projectCont.append(projectBtn,deleteBtn);
+    projectEditBtn.src = editImg;
+    projectEditBtn.setAttribute('data-id',id);
+    projectEditBtn.classList.add('project-edit-btn');
+    projectCont.append(projectBtn,deleteBtn,projectEditBtn);
 }

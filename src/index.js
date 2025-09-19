@@ -1,4 +1,4 @@
-import { initProject, initTask, projectSelect} from "./eventlisteners";
+import { initProject, initTask, projectSelect, taskSelect} from "./eventlisteners";
 import "./style.css";
 
 initProject();
@@ -9,3 +9,5 @@ const card = document.querySelector('.card');
 initTask(card);
 
 projectSelect(nav);
+
+taskSelect(card);

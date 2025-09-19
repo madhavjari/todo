@@ -1,4 +1,5 @@
 import { myProjects } from "./add-project";
+import deleteImg from './img/delete.png';
 
 export function viewTask(projectId,card){
     card.innerHTML = '';
@@ -20,7 +21,11 @@ export function viewTask(projectId,card){
         taskDueElement.textContent = task.taskDue;
         const taskPriorityElement = document.createElement('div');
         taskPriorityElement.textContent = task.taskPriority;
-        taskCard.append(taskNameElement,taskDescElement,taskDueElement,taskPriorityElement);
+        const taskDeleteBtn = document.createElement('img');
+        taskDeleteBtn.src = deleteImg;
+        taskDeleteBtn.setAttribute('data-id',task.id);
+        taskDeleteBtn.classList.add('task-delete-btn');
+        taskCard.append(taskNameElement,taskDescElement,taskDueElement,taskPriorityElement,taskDeleteBtn);
         taskContainer.appendChild(taskCard);
     });
     card.append(projectName,taskContainer);
