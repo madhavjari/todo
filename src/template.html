@@ -58,5 +58,28 @@
             <button type="submit">Save</button>
         </form>
     </dialog>
+
+    <dialog id="edit-todo">
+        <form action="./submit" method="get" class="edit-todo-form">
+            <button id="edit-todo-close-button" type="button">&times;</button>
+            <h2>Add a Task</h2>
+            <label for="task-title-edit">Title*</label>
+            <input type="text" name="task_title" id="task-title-edit" required autofocus>
+            <label for="task-desc-edit">Description</label>
+            <input type="text" name="task_desc" id="task-desc-edit">
+            <label for="due-date-edit">Due</label>
+            <input type="date" name="due_date" id="due-date-edit">
+            <label for="priority-edit">Priority </label>
+            <input type="text" name="priority" id="priority-edit" list="priority-options">
+            <datalist id="priority-options">
+                <option value=""></option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </datalist>
+            <button type="submit">Save</button>
+        </form>
+    </dialog>
+
 </body>
 </html>

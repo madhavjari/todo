@@ -1,5 +1,5 @@
 import deleteImg from './img/delete.png';
-import editImg from './img/edit-button.png'
+import editImg from './img/edit-button.png';
 
 export let myProjects = [];
 

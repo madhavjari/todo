@@ -9,7 +9,10 @@ export function deleteProject(projectId){
     if(projectToDelete) projectToDelete.remove();
     const cardId = '.card[data-id="'+projectId+'"]';
     const card = document.querySelector(cardId);
-    if(card) card.innerHTML = '';
+    if(card) {
+        card.innerHTML = '';
+        card.removeAttribute('data-id');
+    }
 }
 
 export function deleteTask(taskId){
@@ -26,13 +29,3 @@ export function deleteTask(taskId){
     console.log(updatedProjects);
 }
 
-export function editProject(projectId){
-    const projectForm = document.getElementById('edit-project');
-    const projectName = myProjects.find(project => project.id === projectId).projectName;
-    const currProjectName = document.getElementById('project-title-edit');
-    currProjectName.value = projectName;
-    projectForm.showModal();
-    document.getElementById('edit-project-close-button').addEventListener('click',() =>{
-        document.getElementById('edit-project').close();
-    })
-}

@@ -1,7 +1,8 @@
 import { saveTaskForm } from "./add-task";
 import { viewTask } from "./view-task";
-import { saveForm,createProjectElements } from "./add-project";
-import { deleteProject,deleteTask,editProject } from "./delete-project";
+import { saveForm,createProjectElements} from "./add-project";
+import { deleteProject,deleteTask } from "./delete";
+import { editProject,editNameInForm,editTodoForm } from "./edit";
 
 export function initProject(){
     document.getElementById('new-project-btn').addEventListener('click',() =>{
@@ -16,6 +17,7 @@ export function initProject(){
         event.preventDefault();
         const project = saveForm();
         createProjectElements(project.id,project.projectName);
+        document.getElementById('new-project').close();
         event.target.reset();
     })
 }
@@ -58,18 +60,41 @@ export function projectSelect(nav){
         }
         if(projectEditBtn){
             const editBtnId = e.target.dataset.id;
-            editProject(editBtnId);
+            const projectForm = document.getElementById('edit-project');
+            projectForm.showModal();
+            editNameInForm(editBtnId);
+            document.getElementById('edit-project-close-button').addEventListener('click',() =>{
+                projectForm.close();
+            })
         }
+    })
+}
+
+export function projectEditForm(){
+    const projectEditForm = document.querySelector('.edit-project-form');
+    projectEditForm.addEventListener('submit', (e) =>{
+        e.preventDefault();
+        const projectId = e.target.dataset.id;
+        editProject(projectId);
+        document.getElementById('edit-project').close();
+        e.target.reset();
     })
 }
 
 export function taskSelect(card){
     card.addEventListener('click',(e) =>{
-        console.log("yo");
         const taskDeleteBtn = e.target.closest('.task-delete-btn');
+        const taskEditBtn = e.target.closest('.task-edit-btn');
         if(taskDeleteBtn){
             const deleteBtnId = e.target.dataset.id;
             deleteTask(deleteBtnId);
         }
+        if(taskEditBtn){
+            const editBtnId = e.target.dataset.id;
+            const todoForm = document.getElementById('edit-todo');
+            todoForm.showModal();
+            editTodoForm(editBtnId);
+        }
+
     })
 }
