@@ -1,4 +1,4 @@
-import { initProject, initTask, projectEditForm, projectSelect, taskSelect} from "./eventlisteners";
+import { initProject, initTask, projectEditForm, projectSelect, taskEditForm, taskSelect} from "./eventlisteners";
 import "./style.css";
 
 initProject();
@@ -13,3 +13,5 @@ projectSelect(nav);
 projectEditForm();
 
 taskSelect(card);
+
+taskEditForm();

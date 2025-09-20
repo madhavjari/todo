@@ -27,12 +27,14 @@ export function editTodoForm(taskId){
     currTaskDue.value = taskDue;
     currTaskPriority.value = taskPriority;
 
+    const taskEditForm = document.querySelector('.edit-todo-form');
+    taskEditForm.dataset.id = taskId;
+
 }
 
 export function editProject(projectId){
     const editedProjectName = document.getElementById('project-title-edit').value;
         const updatedProjects = myProjects.map(project => {
-            console.log(project);
             if(project.id === projectId){
                 return {
                     ...project,
@@ -44,4 +46,48 @@ export function editProject(projectId){
         updateProjects(updatedProjects);
         const projectBtn = document.querySelector('.project-btn[data-id="'+projectId+'"]');
         projectBtn.textContent = editedProjectName;
+}
+
+export function editTask(taskId){
+    const editedTaskName = document.getElementById('task-title-edit').value;
+    const editedTaskDesc = document.getElementById('task-desc-edit').value;
+    const editedTaskDue = document.getElementById('due-date-edit').value;
+    const editedTaskPriority = document.getElementById('priority-edit').value;
+
+    const updatedProjects = myProjects.map(project => {
+            return{
+                ...project,
+                myTask: project.myTask.map(task =>{
+                    if(task.id === taskId){
+                            return {
+                                ...task,
+                                taskName: editedTaskName,
+                                taskDesc: editedTaskDesc,
+                                taskDue: editedTaskDue,
+                                taskPriority: editedTaskPriority    
+                            }
+                        }
+                return task
+                })
+            }
+        });
+        updateProjects(updatedProjects);  
+        console.log(myProjects); 
+        const idText = '#'+taskId+'.task-card>div:';
+        const firstDiv = idText + 'nth-child(1)';
+        const seconDiv = idText + 'nth-child(2)';
+        const thirdDiv = idText + 'nth-child(3)';
+        const fourthDiv = idText + 'nth-child(4)';
+
+        const taskName = document.querySelector(firstDiv);
+        taskName.textContent = editedTaskName;  
+        
+        const taskDesc = document.querySelector(seconDiv);
+        taskDesc.textContent = editedTaskDesc;
+
+        const taskDue = document.querySelector(thirdDiv);
+        taskDue.textContent = editedTaskDue;
+
+        const taskPriority = document.querySelector(fourthDiv);
+        taskPriority.textContent = editedTaskPriority;
 }

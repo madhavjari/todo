@@ -2,7 +2,7 @@ import { saveTaskForm } from "./add-task";
 import { viewTask } from "./view-task";
 import { saveForm,createProjectElements} from "./add-project";
 import { deleteProject,deleteTask } from "./delete";
-import { editProject,editNameInForm,editTodoForm } from "./edit";
+import { editProject,editNameInForm,editTodoForm,editTask } from "./edit";
 
 export function initProject(){
     document.getElementById('new-project-btn').addEventListener('click',() =>{
@@ -94,7 +94,20 @@ export function taskSelect(card){
             const todoForm = document.getElementById('edit-todo');
             todoForm.showModal();
             editTodoForm(editBtnId);
+            document.getElementById('edit-todo-close-button').addEventListener('click',() =>{
+                todoForm.close();
+            })
         }
+    })
+}
 
+export function taskEditForm(){
+    const taskEditForm = document.querySelector('.edit-todo-form');
+    taskEditForm.addEventListener('submit', (e) =>{
+        e.preventDefault();
+        const taskId = e.target.dataset.id;
+        document.getElementById('edit-todo').close();
+        editTask(taskId);
+        e.target.reset();
     })
 }
