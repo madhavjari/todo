@@ -48,16 +48,19 @@ export function projectSelect(nav){
         const projectBtn = e.target.closest('.project-btn');
         const deleteBtn = e.target.closest('.delete-btn');
         const projectEditBtn = e.target.closest('.project-edit-btn');
+
         if(projectBtn){
             const projectId = e.target.dataset.id;
             const card = document.querySelector('.card');
             card.dataset.id = projectId;
             viewTask(projectId,card);
         }
+
         if(deleteBtn){
             const deleteBtnId = e.target.dataset.id;
             deleteProject(deleteBtnId);
         }
+
         if(projectEditBtn){
             const editBtnId = e.target.dataset.id;
             const projectForm = document.getElementById('edit-project');
@@ -85,10 +88,12 @@ export function taskSelect(card){
     card.addEventListener('click',(e) =>{
         const taskDeleteBtn = e.target.closest('.task-delete-btn');
         const taskEditBtn = e.target.closest('.task-edit-btn');
+        
         if(taskDeleteBtn){
             const deleteBtnId = e.target.dataset.id;
             deleteTask(deleteBtnId);
         }
+
         if(taskEditBtn){
             const editBtnId = e.target.dataset.id;
             const todoForm = document.getElementById('edit-todo');

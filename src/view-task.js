@@ -41,7 +41,6 @@ export function viewTask(projectId,card){
 
         taskCard.append(taskNameElement,taskDescElement,taskDueElement,taskPriorityElement,taskDeleteBtn,taskEditBtn);
         taskContainer.appendChild(taskCard);
-        console.log(myProjects);
     });
     card.append(projectName,taskContainer);
 }

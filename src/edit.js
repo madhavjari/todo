@@ -46,6 +46,8 @@ export function editProject(projectId){
         updateProjects(updatedProjects);
         const projectBtn = document.querySelector('.project-btn[data-id="'+projectId+'"]');
         projectBtn.textContent = editedProjectName;
+
+        localStorage.setItem("myProjects", JSON.stringify(myProjects));
 }
 
 export function editTask(taskId){
@@ -71,10 +73,9 @@ export function editTask(taskId){
                 })
             }
         });
-        updateProjects(updatedProjects);  
-        console.log(myProjects); 
+        updateProjects(updatedProjects);
         const idText = '#'+taskId+'.task-card>div:';
-        const firstDiv = idText + 'nth-child(1)';
+        const firstDiv = idText + 'first-child';
         const seconDiv = idText + 'nth-child(2)';
         const thirdDiv = idText + 'nth-child(3)';
         const fourthDiv = idText + 'nth-child(4)';
@@ -90,4 +91,6 @@ export function editTask(taskId){
 
         const taskPriority = document.querySelector(fourthDiv);
         taskPriority.textContent = editedTaskPriority;
+
+        localStorage.setItem("myProjects", JSON.stringify(myProjects));
 }

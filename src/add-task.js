@@ -7,9 +7,14 @@ export function saveTaskForm(projectId){
     let taskDesc = document.getElementById('task-desc').value;
     let taskDue = document.getElementById('due-date').value;
     let taskPriority = document.getElementById('priority').value;
+
     const task = saveTask(id,taskName,taskDesc,taskDue,taskPriority);
+
     const updatedProjects = appendTask(myProjects,projectId,task);
+
     updateProjects(updatedProjects);
+
+    localStorage.setItem("myProjects", JSON.stringify(myProjects));
 }
 
 //appends the new task in the projects
