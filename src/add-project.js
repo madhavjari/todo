@@ -1,7 +1,24 @@
 import deleteImg from './img/delete.png';
 import editImg from './img/edit-button.png';
 
-export let myProjects = [];
+export let myProjects = loadProjectsFromLocalStorage();
+
+function myProjectsToLocalStorage(myProjects){
+    localStorage.setItem("myProjects", JSON.stringify(myProjects));
+}
+
+function loadProjectsFromLocalStorage(){
+    let projects = localStorage.getItem('myProjects');
+    if(projects) projects =  JSON.parse(projects);
+    else projects =  [];
+    const defaultProjectExists = projects.some(project => project.projectName === 'Default Project');
+    if (!defaultProjectExists) {
+        const defaultProject = projectDetails(crypto.randomUUID(), 'Default Project');
+        projects.unshift(defaultProject);
+        myProjectsToLocalStorage(projects);
+    }
+    return projects;
+}
 
 //saves the new project form
 export function saveForm(){
@@ -9,7 +26,7 @@ export function saveForm(){
     let projectName = document.getElementById('project-title').value;
     let project = projectDetails(id,projectName);
     myProjects.push(project);
-    localStorage.setItem("myProjects", JSON.stringify(myProjects));
+    myProjectsToLocalStorage(myProjects);
     return project;
 }
 
@@ -17,6 +34,7 @@ export function saveForm(){
 export function updateProjects(updatedProjects){
     myProjects.length = 0;
     myProjects.push(...updatedProjects);
+    myProjectsToLocalStorage(myProjects);
 }
 
 //creates the object of new project created

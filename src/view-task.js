@@ -19,15 +19,16 @@ export function viewTask(projectId,card){
 
         const taskNameElement = document.createElement('div');
         taskNameElement.textContent = task.taskName;
+        taskNameElement.classList.add('task-title-element');
 
         const taskDescElement = document.createElement('div');
-        taskDescElement.textContent = task.taskDesc;
+        taskDescElement.textContent = 'Description: '+ task.taskDesc;
 
         const taskDueElement = document.createElement('div');
-        taskDueElement.textContent = task.taskDue;
+        taskDueElement.textContent = 'Due-Date: '+task.taskDue;
 
         const taskPriorityElement = document.createElement('div');
-        taskPriorityElement.textContent = task.taskPriority;
+        taskPriorityElement.textContent = 'Priority: ' + task.taskPriority;
 
         const taskDeleteBtn = document.createElement('img');
         taskDeleteBtn.src = deleteImg;

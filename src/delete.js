@@ -2,8 +2,9 @@ import { myProjects} from "./add-project";
 import { updateProjects } from "./add-project";
 
 export function deleteProject(projectId){
-    const index = myProjects.findIndex(project => project.id === projectId);
-    if(index !== -1)myProjects.splice(index,1);
+    const updatedProjects = myProjects.filter(project => project.id !== projectId);
+    console.log(updatedProjects);
+    updateProjects(updatedProjects);
 
     const projectToDelete = document.getElementById(projectId);
     if(projectToDelete) projectToDelete.remove();
@@ -14,8 +15,6 @@ export function deleteProject(projectId){
         card.innerHTML = '';
         card.removeAttribute('data-id');
     }
-
-    localStorage.setItem("myProjects", JSON.stringify(myProjects));
 }
 
 export function deleteTask(taskId){
@@ -30,7 +29,5 @@ export function deleteTask(taskId){
         };
     });
     updateProjects(updatedProjects);
-
-    localStorage.setItem("myProjects", JSON.stringify(myProjects));
 }
 

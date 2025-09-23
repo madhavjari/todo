@@ -4,21 +4,42 @@
     padding:0;
 }
 
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--light-blue);
+}
+
+:root{
+    --light-blue: #e9eef6;
+    --dark-blue: #063d96;
+    --purple: #040222;
+}
+
 h1{
     font-size: 2.5rem;
-    color: brown;
 }
 
 .main-container{
     display:grid;
-    grid-template-columns: 1fr 5fr;
-    gap: 0.5rem;
+    grid-template-columns: 1fr 3fr;
 }
 
 header{
     grid-column: -1/1;
     text-align: center;
-    margin-top: 1rem;
+    height:5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0.4rem 0.1rem;
+}
+
+nav{
+    padding: 2rem;
+    min-height:calc(100vh - 5rem);
+    max-height: auto;
+    box-shadow: 0 0.2rem 0.4rem 0rem;
+    background-color: var(--purple);
 }
 
 nav>div:first-child{
@@ -30,21 +51,30 @@ nav>div:first-child{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 #new-project-btn,.project-btn,#new-task{
-    width: 10rem;
+    width: 12rem;
     font-size: 1.5rem;
     background-color: inherit;
     border:none;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     cursor: pointer;
+    color:white;
+}
+
+#new-task{
+    width: fit-content;
+    text-align: center;
+    border: none;
+    padding-top: 2rem;
+    color: var(--purple);
 }
 
 #new-project-btn:hover,.project-btn:hover,#new-task:hover{
-    box-shadow: 0 0rem 0.2rem 0;
-    color: brown;
+    font-size: 1.8rem;
 }
 
 form{
@@ -57,13 +87,40 @@ form{
     margin-top: 1rem;
     box-shadow: 0 0 10px 3px lightgrey;
     border-radius: 10px;
+    display: grid;
+    gap: 1rem;
+}
+
+form > button{
+    border: none;
+    box-shadow: 0 0 0.2rem 0;
+    height: 2rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+form > button:hover{
+    font-size: 1.2rem;
+}
+
+.project-form, .edit-project-form{
+    height: 35vh;
+    width: 45vh;
+}
+
+input,select{
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border:none;
+    box-shadow: 0 0 0.2rem 0;
 }
 
 form >*{
     background-color: white;
 }
 
-#project-close-button, #todo-close-button,#edit-project-close-button{
+#project-close-button, #todo-close-button,#edit-project-close-button,#edit-todo-close-button{
     background-color: inherit;
     color:black;
     width:1rem;
@@ -76,40 +133,75 @@ form >*{
 
 .article{
     margin-left: 3rem;
-}
-
-.article > div:first-child{
-    height: 3rem;
+    max-width: 50rem;
+    padding: 2rem;
 }
 
 .card > h2{
     text-align: center;
 }
 
-#new-task{
-    width: 3rem;
-    height: 3rem;
-    text-align: center;
-    border-radius: 50%;
-}
-
 .task-container{
     font-size: 1.2rem;
     padding-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit,10rem);
     gap: 2rem;
 }
 
 .task-card{
-    min-height: 10rem;
-    box-shadow: 0 0.2rem 0.6rem 0;
+    position: relative;
+    min-height: 6rem;
+    max-width: 50rem;
+    box-shadow: 0rem 0.7rem 1rem 0rem;
     padding: 1rem;
     border-radius: 1rem;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.task-card > div{
+    overflow-wrap: break-word;
+}
+
+.task-card:hover{
+    font-size: 1.6rem;
+    color: var(--dark-blue);
+    cursor:zoom-in;
+}
+
+.task-title-element{
+    font-weight: bolder;
+    font-size: 2rem;
+    
 }
 
 img{
-    width: 1rem;
-    height: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
     cursor: pointer;
+}
+
+.project-container> img{
+    filter: invert(70%) brightness(80%);
+}
+
+.project-container > img:hover{
+    filter: invert(100%) sepia(50%) saturate(50%) brightness(100%);
+}
+
+img:hover{
+    width: 1.4rem;
+    height: 1.4rem;
+}
+
+.task-edit-btn{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.task-delete-btn{
+    position: absolute;
+    bottom: 1rem;
+    right: 3rem;
 }

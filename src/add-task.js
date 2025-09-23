@@ -2,7 +2,7 @@ import { myProjects,updateProjects } from "./add-project";
 
 //saves the new task form
 export function saveTaskForm(projectId){
-    const id = crypto.randomUUID();
+    const id = 'a' + crypto.randomUUID();
     let taskName = document.getElementById('task-title').value;
     let taskDesc = document.getElementById('task-desc').value;
     let taskDue = document.getElementById('due-date').value;
@@ -13,8 +13,6 @@ export function saveTaskForm(projectId){
     const updatedProjects = appendTask(myProjects,projectId,task);
 
     updateProjects(updatedProjects);
-
-    localStorage.setItem("myProjects", JSON.stringify(myProjects));
 }
 
 //appends the new task in the projects

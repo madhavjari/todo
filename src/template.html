@@ -15,7 +15,7 @@
             <button id="new-project-btn">Create Project</button>
         </nav>
         <div class="article">
-            <div><button id="new-task">+</button></div>
+            <div><button id="new-task">+ Add Task</button></div>
             <div class="card" data-id=""></div>
         </div>
     </div>
@@ -23,9 +23,9 @@
         <form action="./submit" method="get" class="project-form">
             <button id="project-close-button" type="button">&times;</button>
             <h2>Add a Project</h2>
-            <label for="project-title">Project Name*</label>
+            <label for="project-title"><h3>Project Name*</h3></label>
             <input type="text" name="project_title" id="project-title" required autofocus>
-            <button type="submit">Save</button>
+            <button type="submit"><h3>Save</h3></button>
         </form>
     </dialog>
     <dialog id="edit-project">
@@ -48,13 +48,11 @@
             <label for="due-date">Due</label>
             <input type="date" name="due_date" id="due-date">
             <label for="priority">Priority </label>
-            <input type="text" name="priority" id="priority" list="priority-options">
-            <datalist id="priority-options">
-                <option value=""></option>
+            <select id="priority">
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
-            </datalist>
+            </select>
             <button type="submit">Save</button>
         </form>
     </dialog>
@@ -70,13 +68,11 @@
             <label for="due-date-edit">Due</label>
             <input type="date" name="due_date" id="due-date-edit">
             <label for="priority-edit">Priority </label>
-            <input type="text" name="priority" id="priority-edit" list="priority-options">
-            <datalist id="priority-options">
-                <option value=""></option>
+            <select id="priority-edit">
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
-            </datalist>
+            </select>
             <button type="submit">Save</button>
         </form>
     </dialog>

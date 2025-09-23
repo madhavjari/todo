@@ -46,8 +46,6 @@ export function editProject(projectId){
         updateProjects(updatedProjects);
         const projectBtn = document.querySelector('.project-btn[data-id="'+projectId+'"]');
         projectBtn.textContent = editedProjectName;
-
-        localStorage.setItem("myProjects", JSON.stringify(myProjects));
 }
 
 export function editTask(taskId){
@@ -84,13 +82,11 @@ export function editTask(taskId){
         taskName.textContent = editedTaskName;  
         
         const taskDesc = document.querySelector(seconDiv);
-        taskDesc.textContent = editedTaskDesc;
+        taskDesc.textContent = 'Description: ' + editedTaskDesc;
 
         const taskDue = document.querySelector(thirdDiv);
-        taskDue.textContent = editedTaskDue;
+        taskDue.textContent = 'Due Date: ' +editedTaskDue;
 
         const taskPriority = document.querySelector(fourthDiv);
-        taskPriority.textContent = editedTaskPriority;
-
-        localStorage.setItem("myProjects", JSON.stringify(myProjects));
+        taskPriority.textContent = 'Priority: '+ editedTaskPriority;
 }
