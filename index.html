@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>To-do List</h1>
+        </header>
+        <nav>
+            <div></div>
+            <button id="new-project-btn">Create Project</button>
+        </nav>
+        <div class="article">
+            <div><button id="new-task">+ Add Task</button></div>
+            <div class="card" data-id=""></div>
+        </div>
+    </div>
+    <dialog id="new-project">
+        <form action="./submit" method="get" class="project-form">
+            <button id="project-close-button" type="button">&times;</button>
+            <h2>Add a Project</h2>
+            <label for="project-title"><h3>Project Name*</h3></label>
+            <input type="text" name="project_title" id="project-title" required autofocus>
+            <button type="submit"><h3>Save</h3></button>
+        </form>
+    </dialog>
+    <dialog id="edit-project">
+        <form action="./submit" method="get" class="edit-project-form">
+            <button id="edit-project-close-button" type="button">&times;</button>
+            <h2>Edit Project</h2>
+            <label for="project-title-edit">Project Name*</label>
+            <input type="text" name="project_title" id="project-title-edit" required autofocus>
+            <button type="submit">Save</button>
+        </form>
+    </dialog>
+    <dialog id="new-todo">
+        <form action="./submit" method="get" class="todo-form">
+            <button id="todo-close-button" type="button">&times;</button>
+            <h2>Add a Task</h2>
+            <label for="task-title">Title*</label>
+            <input type="text" name="task_title" id="task-title" required autofocus>
+            <label for="task-desc">Description</label>
+            <input type="text" name="task_desc" id="task-desc">
+            <label for="due-date">Due</label>
+            <input type="date" name="due_date" id="due-date">
+            <label for="priority">Priority </label>
+            <select id="priority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <button type="submit">Save</button>
+        </form>
+    </dialog>
+
+    <dialog id="edit-todo">
+        <form action="./submit" method="get" class="edit-todo-form">
+            <button id="edit-todo-close-button" type="button">&times;</button>
+            <h2>Add a Task</h2>
+            <label for="task-title-edit">Title*</label>
+            <input type="text" name="task_title" id="task-title-edit" required autofocus>
+            <label for="task-desc-edit">Description</label>
+            <input type="text" name="task_desc" id="task-desc-edit">
+            <label for="due-date-edit">Due</label>
+            <input type="date" name="due_date" id="due-date-edit">
+            <label for="priority-edit">Priority </label>
+            <select id="priority-edit">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <button type="submit">Save</button>
+        </form>
+    </dialog>
+
+</body>
+</html>
